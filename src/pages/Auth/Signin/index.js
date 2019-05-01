@@ -5,6 +5,8 @@ import { Container, Form } from "../styles";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
+import Logo from "../../../assets/yung.png";
+
 import AuthActions from "../../../store/ducks/auth";
 
 class Signin extends Component {
@@ -31,6 +33,7 @@ class Signin extends Component {
     return (
       <Container>
         <Form onSubmit={this.handleSubmit}>
+          <img src={Logo} alt="logo" />
           <span>Email</span>
           <input
             type="email"

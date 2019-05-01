@@ -12,15 +12,18 @@ export const Container = styled.div`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  background: #36393f;
+  background: #fff;
   box-shadow: 0 2px 10px 0 rgb(0, 0, 0, 0.2);
   border-radius: 5px;
   padding: 40px;
   width: 400px;
   align-items: stretch;
 
+  img {
+    height: 200px;
+  }
   span {
-    color: white;
+    color: black;
     font-weight: bold;
     letter-spacing: 1.11px;
     /* line-height: 20px; */
