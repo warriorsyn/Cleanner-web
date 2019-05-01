@@ -19,8 +19,14 @@ export const Form = styled.form`
   width: 400px;
   align-items: stretch;
 
+  #img-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   img {
-    height: 200px;
+    height: 230px;
+    width: 230px;
   }
   span {
     color: black;

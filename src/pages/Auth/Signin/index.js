@@ -33,7 +33,9 @@ class Signin extends Component {
     return (
       <Container>
         <Form onSubmit={this.handleSubmit}>
-          <img src={Logo} alt="logo" />
+          <div id="img-container">
+            <img src={Logo} alt="logo" />
+          </div>
           <span>Email</span>
           <input
             type="email"
