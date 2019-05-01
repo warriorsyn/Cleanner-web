@@ -40,9 +40,9 @@ class Worker extends Component {
                         <td>{item.email}</td>
 
                         <td>
-                          <button className="btn btn-primary btn-sm">
+                          {/* <button className="btn btn-primary btn-sm">
                             More
-                          </button>
+                          </button> */}
                         </td>
                       </tr>
                     ))}

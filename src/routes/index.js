@@ -23,6 +23,7 @@ import Schedules from "../pages/worker/Schedules";
 import UniqueSchedule from "../pages/worker/UniqueSchedule";
 import Product from "../pages/admin/Product";
 import NewProduct from "../pages/admin/NewProduct";
+import AdminUniqueSchedule from "../pages/admin/UniqueSchedule";
 
 import WorkerProduct from "../pages/worker/Products";
 import OrderProduct from "../pages/worker/OrderProduct";
@@ -49,6 +50,11 @@ const routes = () => (
       {/* Schedule Route */}
       <Private path="/schedule" exact component={Schedule} />
       <Private path="/schedule/new" exact component={NewSchedule} />
+      <Private
+        path="/unique/schedule/:id"
+        exact
+        component={AdminUniqueSchedule}
+      />
 
       {/* Product Admin Route */}
       <Private path="/product" exact component={Product} />

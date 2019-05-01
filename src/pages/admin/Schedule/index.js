@@ -40,14 +40,30 @@ class Schedule extends Component {
                   {this.props.schedule.data.data &&
                     this.props.schedule.data.data.map(item => (
                       <tr key={item.id}>
-                        <td>{item.work}</td>
+                        <td>
+                          {item.work}{" "}
+                          {item.status ? (
+                            <i
+                              style={{ color: "green " }}
+                              className="fas fa-check-circle"
+                            />
+                          ) : (
+                            <i
+                              style={{ color: "#a9a91a" }}
+                              className="fas fa-hourglass-end"
+                            />
+                          )}
+                        </td>
                         <td>{item.address}</td>
                         <td>{moment(item.date_time).format("DD/MM/YYYY")}</td>
 
                         <td>
-                          <button className="btn btn-primary btn-sm">
+                          <Button
+                            to={`/unique/schedule/${item.id}`}
+                            className="btn btn-primary btn-sm"
+                          >
                             More
-                          </button>
+                          </Button>
                         </td>
                       </tr>
                     ))}
