@@ -1,5 +1,7 @@
 import { call, put } from "redux-saga/effects";
 import api from "../../services/api";
+import { push } from "connected-react-router";
+import { actions as toastrActions } from "react-redux-toastr";
 
 import ScheduleActions from "../ducks/schedule";
 
@@ -28,13 +30,23 @@ export function* createSchedule({
       checklist,
       address
     });
-    // console.log(work, observe, date_time, worker_id, client_id, checklist)
 
-    // yield put(ToastActionsCreators.displayInfo("Schedule created!"));
-    // console.log(address)
-    // NavigationService.navigate("Schedule");
+    yield put(push("/schedule"));
+    yield put(
+      toastrActions.add({
+        type: "success",
+        title: "Schedule success!",
+        message: "Schedule created!"
+      })
+    );
   } catch (e) {
-    // yield put(ToastActionsCreators.displayError("Something went wrong!"));
+    yield put(
+      toastrActions.add({
+        type: "error",
+        title: "Schedule Error!",
+        message: "Check the inputs!"
+      })
+    );
   }
 }
 
@@ -60,8 +72,22 @@ export function* finishSchedule({ time_worked, id, finished_job, client_id }) {
       client_id
     });
 
-    // NavigationService.navigate("Schedule");
+    yield put(push("/worker/myschedules"));
+
+    yield put(
+      toastrActions.add({
+        type: "success",
+        title: "Finished work Success!",
+        message: "Work Done!"
+      })
+    );
   } catch (e) {
-    console.log(e.response);
+    yield put(
+      toastrActions.add({
+        type: "error",
+        title: "Finished work Error!",
+        message: "Check the input!"
+      })
+    );
   }
 }

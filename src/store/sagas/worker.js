@@ -1,5 +1,7 @@
 import { call, put } from "redux-saga/effects";
 import api from "../../services/api";
+import { push } from "connected-react-router";
+import { actions as toastrActions } from "react-redux-toastr";
 
 import WorkerActions from "../ducks/worker";
 
@@ -11,9 +13,23 @@ export function* createWorker({ name, email, password }) {
 
     yield put(WorkerActions.createWorkerSuccess());
 
-    // NavigationService.navigate("Worker");
+    yield put(push("/worker"));
+
+    yield put(
+      toastrActions.add({
+        type: "success",
+        title: "Worker success!",
+        message: "Worker created!"
+      })
+    );
   } catch (e) {
-    alert(e);
+    yield put(
+      toastrActions.add({
+        type: "error",
+        title: "Worker error!",
+        message: "Check the inputs!"
+      })
+    );
   }
 }
 

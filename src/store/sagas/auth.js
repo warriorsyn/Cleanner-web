@@ -19,10 +19,10 @@ export function* signIn({ email, password }) {
     yield put(AuthActions.roleSuccess(response.data.user.role));
 
     if (response.data.user.role === "worker") {
-      return yield put(push("/worker"));
+      return yield put(push("/worker/myschedules"));
+    } else {
+      yield put(push("/home"));
     }
-
-    yield put(push("/home"));
   } catch (err) {
     yield put(
       toastrActions.add({
@@ -35,6 +35,7 @@ export function* signIn({ email, password }) {
 }
 
 export function* signOut() {
-  //   yield call([AsyncStorage, "clear"]);
-  //   NavigationService.navigate("Signin");
+  localStorage.clear();
+
+  yield put(push("/"));
 }

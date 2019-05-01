@@ -20,7 +20,7 @@ export const INITIAL_STATE = Immutable({
   authChecked: false,
   signedIn: !!localStorage.getItem("@cleaner:token"),
   token: localStorage.getItem("@cleaner:token"),
-  role: null
+  role: localStorage.getItem("@cleaner:role")
 });
 
 /* Reducers */

@@ -1,23 +1,22 @@
 import React, { Component, Fragment } from "react";
-import { Col, Row, Table } from "reactstrap";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import ClientActions from "../../../store/ducks/client";
-
+import { Table, Row, Col } from "reactstrap";
 import NavBar from "../../../components/NavBar";
 import { Container, Button } from "./styles";
 
-class Client extends Component {
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import WorkerActions from "../../../store/ducks/worker";
+
+class Worker extends Component {
   componentDidMount() {
-    this.props.getClientRequest();
+    this.props.getWorkerRequest();
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.client.data.data !== this.props.client.data.data) {
-      this.props.getClientRequest();
+    if (prevProps.worker.data.data !== this.props.worker.data.data) {
+      this.props.getWorkerRequest();
     }
   }
-
   render() {
     return (
       <Fragment>
@@ -29,22 +28,16 @@ class Client extends Component {
                 <thead>
                   <tr>
                     <th>Name</th>
-                    <th>Address</th>
+                    <th>Email</th>
                     <th />
                   </tr>
                 </thead>
                 <tbody>
-                  {this.props.client.data.data &&
-                    this.props.client.data.data.map(item => (
+                  {this.props.worker.data.data &&
+                    this.props.worker.data.data.map(item => (
                       <tr key={item.id}>
                         <td>{item.name}</td>
-                        <td>
-                          <i
-                            style={{ marginRight: 5 }}
-                            className="fas fa-map-marker-alt"
-                          />
-                          {item.address}
-                        </td>
+                        <td>{item.email}</td>
 
                         <td>
                           <button className="btn btn-primary btn-sm">
@@ -57,8 +50,8 @@ class Client extends Component {
               </Table>
             </Col>
           </Row>
-          <Button className="btn btn-primary" to="/client/new">
-            add
+          <Button className="btn btn-primary" to="/worker/new">
+            Add
           </Button>
         </Container>
       </Fragment>
@@ -67,13 +60,13 @@ class Client extends Component {
 }
 
 const mapStateToProps = state => ({
-  client: state.client
+  worker: state.worker
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators(ClientActions, dispatch);
+  bindActionCreators(WorkerActions, dispatch);
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Client);
+)(Worker);

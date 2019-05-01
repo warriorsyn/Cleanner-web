@@ -19,23 +19,17 @@ export default class NavBar extends React.Component {
     return (
       <Fragment>
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">
-            Admin ({localStorage.getItem("@cleaner:user")})
+          <NavbarBrand href="/worker/myschedules">
+            Worker ({localStorage.getItem("@cleaner:user")})
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <LinkBar to="/home">Home</LinkBar>
+                <LinkBar to="/worker/myschedules">Schedules</LinkBar>
               </NavItem>
               <NavItem>
-                <LinkBar to="/client">Client</LinkBar>
-              </NavItem>
-              <NavItem>
-                <LinkBar to="/worker">Worker</LinkBar>
-              </NavItem>
-              <NavItem>
-                <LinkBar to="/schedule">Schedule</LinkBar>
+                <LinkBar to="/worker/products">Products</LinkBar>
               </NavItem>
             </Nav>
           </Collapse>

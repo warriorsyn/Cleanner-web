@@ -1,13 +1,13 @@
 import React, { Component, Fragment } from "react";
-import { Col, Row, Table } from "reactstrap";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import ClientActions from "../../../store/ducks/client";
-
-import NavBar from "../../../components/NavBar";
+import { Table, Row, Col } from "reactstrap";
+import NavBar from "../../../../components/NavBar";
 import { Container, Button } from "./styles";
 
-class Client extends Component {
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import ClientActions from "../../../../store/ducks/client";
+
+class ChooseClient extends Component {
   componentDidMount() {
     this.props.getClientRequest();
   }
@@ -17,7 +17,6 @@ class Client extends Component {
       this.props.getClientRequest();
     }
   }
-
   render() {
     return (
       <Fragment>
@@ -29,7 +28,7 @@ class Client extends Component {
                 <thead>
                   <tr>
                     <th>Name</th>
-                    <th>Address</th>
+
                     <th />
                   </tr>
                 </thead>
@@ -38,18 +37,14 @@ class Client extends Component {
                     this.props.client.data.data.map(item => (
                       <tr key={item.id}>
                         <td>{item.name}</td>
-                        <td>
-                          <i
-                            style={{ marginRight: 5 }}
-                            className="fas fa-map-marker-alt"
-                          />
-                          {item.address}
-                        </td>
 
                         <td>
-                          <button className="btn btn-primary btn-sm">
-                            More
-                          </button>
+                          <Button
+                            to={`/client/report/${item.id}`}
+                            className="btn btn-primary btn-sm"
+                          >
+                            Report
+                          </Button>
                         </td>
                       </tr>
                     ))}
@@ -57,9 +52,6 @@ class Client extends Component {
               </Table>
             </Col>
           </Row>
-          <Button className="btn btn-primary" to="/client/new">
-            add
-          </Button>
         </Container>
       </Fragment>
     );
@@ -76,4 +68,4 @@ const mapDispatchToProps = dispatch =>
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Client);
+)(ChooseClient);

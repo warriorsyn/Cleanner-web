@@ -1,7 +1,8 @@
 import { createGlobalStyle } from "styled-components";
 import "react-redux-toastr/lib/css/react-redux-toastr.min.css";
+import "react-perfect-scrollbar/dist/css/styles.css";
 export default createGlobalStyle`
-    @import url('https://fonts.googleapis/css?family=Source+Sans+Pro');
+    @import url("https://fonts.googleapis.com/css?family=Fira+Sans:400,700");
 
     * {
         padding: 0;
@@ -11,7 +12,7 @@ export default createGlobalStyle`
     }
 
     body {
-        font-family: 'Source Sans Pro', sans-serif;
+        font-family: 'Fira Sans', sans-serif;
         text-rendering: optimizeLegibility !important;
         -webkit-font-smoothing: antialiased !important;
         background: #f9f9f9 !important;
@@ -22,7 +23,7 @@ export default createGlobalStyle`
     }
 
     input, button {
-        font-family: 'Source Sans Pro', sans-serif;
+        font-family: 'Fira Sans', sans-serif;
     }
 
     button {

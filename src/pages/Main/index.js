@@ -1,50 +1,69 @@
-import React from "react";
-import { Row, Col } from "reactstrap";
+import React, { Component } from "react";
+import { Row, Col, Button } from "reactstrap";
 import NavBar from "../../components/NavBar";
 
+import { connect } from "react-redux";
+
+import { bindActionCreators } from "redux";
+import AuthActions from "../../store/ducks/auth";
+
 import { Options, Container } from "./styles";
+class Main extends Component {
+  handlerClick = () => this.props.signOut();
+  render() {
+    return (
+      <div>
+        <NavBar />
+        <Container>
+          <Row>
+            <Col sm="12">
+              <Options to="/worker/report">
+                <span>Worker Hours report</span>
 
-const Main = () => (
-  <div>
-    <NavBar />
-    <Container>
-      <Row>
-        <Col sm="12">
-          <Options to="/main">
-            <span>Worker Hours report</span>
+                <div>
+                  <i class="fas fa-arrow-right" />
+                </div>
+              </Options>
+            </Col>
+          </Row>
 
-            <div>
-              <i class="fas fa-arrow-right" />
-            </div>
-          </Options>
-        </Col>
-      </Row>
+          <Row>
+            <Col sm="12">
+              <Options to="/client/report">
+                <span>Client Hour Report</span>
 
-      <Row>
-        <Col sm="12">
-          <Options to="/main">
-            <span>Client Hour Report</span>
+                <div>
+                  <i class="fas fa-arrow-right" />
+                </div>
+              </Options>
+            </Col>
+          </Row>
 
-            <div>
-              <i class="fas fa-arrow-right" />
-            </div>
-          </Options>
-        </Col>
-      </Row>
+          <Row>
+            <Col sm="12">
+              <Options to="/product">
+                <span>Product</span>
 
-      <Row>
-        <Col sm="12">
-          <Options to="/main">
-            <span>Product</span>
+                <div>
+                  <i class="fas fa-arrow-right" />
+                </div>
+              </Options>
 
-            <div>
-              <i class="fas fa-arrow-right" />
-            </div>
-          </Options>
-        </Col>
-      </Row>
-    </Container>
-  </div>
-);
+              <Button onClick={this.handlerClick} color="danger">
+                LOG OUT
+              </Button>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+    );
+  }
+}
 
-export default Main;
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(AuthActions, dispatch);
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Main);
