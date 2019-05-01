@@ -59,6 +59,9 @@ class UniqueSchedule extends Component {
                         : this.props.schedule.scheduleById.data.observe}
                     </span>
                     <span>
+                      Address: {this.props.schedule.scheduleById.data.address}
+                    </span>
+                    <span>
                       Work date:{" "}
                       {moment(
                         this.props.schedule.scheduleById.data.date_time
@@ -66,6 +69,14 @@ class UniqueSchedule extends Component {
                     </span>
                     <div>
                       <span>Checklist: </span>
+                      {this.props.schedule.scheduleById.data.checklist &&
+                        this.props.schedule.scheduleById.data.checklist.map(
+                          checklist => (
+                            <div key={checklist.id}>
+                              <span>{checklist.task}</span>
+                            </div>
+                          )
+                        )}
                     </div>
                   </div>
                 )}

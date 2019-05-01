@@ -30,7 +30,9 @@ class Schedule extends Component {
                 <thead>
                   <tr>
                     <th>Name</th>
+                    <th>Address</th>
                     <th>Date</th>
+
                     <th />
                   </tr>
                 </thead>
@@ -39,6 +41,7 @@ class Schedule extends Component {
                     this.props.schedule.data.data.map(item => (
                       <tr key={item.id}>
                         <td>{item.work}</td>
+                        <td>{item.address}</td>
                         <td>{moment(item.date_time).format("DD/MM/YYYY")}</td>
 
                         <td>
