@@ -1,7 +1,13 @@
 import React, { Fragment } from "react";
 import { Collapse, NavbarToggler, NavbarBrand, Nav, NavItem } from "reactstrap";
-import { LinkBar, Navbar } from "./styles";
-export default class NavBar extends React.Component {
+import { LinkBar, Navbar, Button } from "./styles";
+
+import { connect } from "react-redux";
+
+import { bindActionCreators } from "redux";
+import AuthActions from "../../store/ducks/auth";
+
+class WorkerNavBar extends React.Component {
   constructor(props) {
     super(props);
 
@@ -15,6 +21,9 @@ export default class NavBar extends React.Component {
       isOpen: !this.state.isOpen
     });
   }
+
+  logout = () => this.props.signOut();
+
   render() {
     return (
       <Fragment>
@@ -34,6 +43,15 @@ export default class NavBar extends React.Component {
               <NavItem>
                 <LinkBar to="/worker/requested">Requested products</LinkBar>
               </NavItem>
+              <NavItem>
+                <Button
+                  onClick={this.logout}
+                  style={{ marginTop: 5 }}
+                  className="btn btn-danger"
+                >
+                  Logout
+                </Button>
+              </NavItem>
             </Nav>
           </Collapse>
         </Navbar>
@@ -41,3 +59,10 @@ export default class NavBar extends React.Component {
     );
   }
 }
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(AuthActions, dispatch);
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(WorkerNavBar);

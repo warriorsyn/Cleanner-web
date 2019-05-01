@@ -18,6 +18,23 @@ export const LinkBar = styled(Link)`
   }
 `;
 
+export const Button = styled.button`
+  padding: 10px 0;
+  margin-bottom: 125px;
+  text-decoration: none !important;
+  color: black;
+  font-size: 20px;
+  line-height: 50px;
+
+  @media (min-width: 768px) {
+    padding: 2px;
+    margin-right: 10px;
+    text-decoration: none !important;
+    color: black;
+    font-size: 18px;
+  }
+`;
+
 export const Navbar = styled(BootstrapNavbar)`
   padding-bottom: 86px !important;
   @media (min-width: 768px) {
