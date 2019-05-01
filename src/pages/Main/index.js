@@ -21,7 +21,7 @@ class Main extends Component {
                 <span>Worker Hours report</span>
 
                 <div>
-                  <i class="fas fa-arrow-right" />
+                  <i className="fas fa-arrow-right" />
                 </div>
               </Options>
             </Col>
@@ -33,7 +33,7 @@ class Main extends Component {
                 <span>Client Hour Report</span>
 
                 <div>
-                  <i class="fas fa-arrow-right" />
+                  <i className="fas fa-arrow-right" />
                 </div>
               </Options>
             </Col>
@@ -45,7 +45,7 @@ class Main extends Component {
                 <span>Product</span>
 
                 <div>
-                  <i class="fas fa-arrow-right" />
+                  <i className="fas fa-arrow-right" />
                 </div>
               </Options>
 

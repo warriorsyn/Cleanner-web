@@ -31,6 +31,9 @@ export default class NavBar extends React.Component {
               <NavItem>
                 <LinkBar to="/worker/products">Products</LinkBar>
               </NavItem>
+              <NavItem>
+                <LinkBar to="/worker/requested">Requested products</LinkBar>
+              </NavItem>
             </Nav>
           </Collapse>
         </Navbar>

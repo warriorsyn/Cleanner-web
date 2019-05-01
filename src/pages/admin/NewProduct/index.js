@@ -30,7 +30,6 @@ class NewProduct extends Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <Fragment>
         <NavBar />

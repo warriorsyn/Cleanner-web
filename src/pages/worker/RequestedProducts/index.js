@@ -4,46 +4,41 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import ProductActions from "../../../store/ducks/product";
 
-import NavBar from "../../../components/NavBar";
-import { Container, Button } from "./styles";
+import WorkerNavBar from "../../../components/WorkerNavBar";
+import { Container } from "./styles";
 
-class OrdersProduct extends Component {
+class Products extends Component {
   componentDidMount() {
-    this.props.getOrdersRequest();
-  }
-  componentDidUpdate(prevProps) {
-    if (prevProps !== this.props) {
-      this.props.getOrdersRequest();
-    }
+    this.props.getOrderByWorkerIdRequest();
   }
 
-  handlerClick = id => this.props.updateOrderRequest(id);
+  //   componentDidUpdate(prevProps) {
+  //     if (prevProps !== this.props) {
+  //       this.props.getOrderByWorkerIdRequest();
+  //     }
+  //   }
 
   render() {
-    console.log(this.props.product.orders);
+    console.log(this.props);
     return (
       <Fragment>
-        <NavBar />
+        <WorkerNavBar />
         <Container>
           <Row>
             <Col>
-              <Button to="/product">Back</Button>
               <Table striped>
                 <thead>
                   <tr>
                     <th>Name</th>
                     <th>Quantity</th>
-                    <th>Schedule</th>
-
-                    <th />
                   </tr>
                 </thead>
                 <tbody>
-                  {this.props.product.orders.data &&
-                    this.props.product.orders.data.map(item => (
+                  {this.props.product.orderByWorkerId.data &&
+                    this.props.product.orderByWorkerId.data.map(item => (
                       <tr key={item.id}>
                         <td>
-                          {item.product.name}{" "}
+                          {item.name}{" "}
                           {item.status ? (
                             <i
                               style={{ color: "green " }}
@@ -54,16 +49,6 @@ class OrdersProduct extends Component {
                           )}
                         </td>
                         <td>{item.quantity}</td>
-                        <td>{item.schedule.work}</td>
-
-                        <td>
-                          <button
-                            onClick={() => this.handlerClick(item.id)}
-                            className="btn btn-primary btn-sm"
-                          >
-                            Ok
-                          </button>
-                        </td>
                       </tr>
                     ))}
                 </tbody>
@@ -86,4 +71,4 @@ const mapDispatchToProps = dispatch =>
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(OrdersProduct);
+)(Products);

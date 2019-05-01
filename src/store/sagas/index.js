@@ -9,9 +9,12 @@ import { createWorker, getWorkers } from "./worker";
 import {
   getProducts,
   createProducts,
+  updateProduct,
   getOrders,
   getById,
-  createOrder
+  createOrder,
+  updateOrder,
+  getOrderByWorkerId
 } from "./product";
 
 import {
@@ -47,9 +50,12 @@ export default function*() {
     takeLatest(ScheduleTypes.FINISH_SCHEDULE_REQUEST, finishSchedule),
     takeLatest(ProductTypes.GET_PRODUCTS_REQUEST, getProducts),
     takeLatest(ProductTypes.CREATE_PRODUCTS_REQUEST, createProducts),
+    takeLatest(ProductTypes.UPDATE_PRODUCTS_REQUEST, updateProduct),
     takeLatest(ProductTypes.GET_ORDERS_REQUEST, getOrders),
     takeLatest(ProductTypes.GET_PRODUCT_BY_ID_REQUEST, getById),
     takeLatest(ProductTypes.CREATE_ORDER_REQUEST, createOrder),
+    takeLatest(ProductTypes.UPDATE_ORDER_REQUEST, updateOrder),
+    takeLatest(ProductTypes.GET_ORDER_BY_WORKER_ID_REQUEST, getOrderByWorkerId),
     takeLatest(HoursTypes.GET_HOURS_REPORT_REQUEST, getHoursReport)
   ]);
 }

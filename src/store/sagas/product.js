@@ -34,6 +34,30 @@ export function* createProducts({ name, code, quantity }) {
   }
 }
 
+export function* updateProduct({ name, code, quantity, id }) {
+  try {
+    yield call(api.put, `product/${id}`, { name, code, quantity });
+
+    yield put(push("/product"));
+
+    yield put(
+      toastrActions.add({
+        type: "success",
+        title: "Product Success!",
+        message: "Product Updated!"
+      })
+    );
+  } catch (e) {
+    yield put(
+      toastrActions.add({
+        type: "error",
+        title: "Product Error!",
+        message: "Check the fields!"
+      })
+    );
+  }
+}
+
 export function* getOrders() {
   const { data } = yield call(api.get, "order");
   yield put(ProductActions.getOrdersSuccess(data));
@@ -42,6 +66,12 @@ export function* getOrders() {
 export function* getById({ id }) {
   const { data } = yield call(api.get, `product/${id}`);
   yield put(ProductActions.getProductByIdSuccess(data));
+}
+
+export function* getOrderByWorkerId() {
+  const { data } = yield call(api.get, "ordermine");
+
+  yield put(ProductActions.getOrderByWorkerIdSuccess(data.rows));
 }
 
 export function* createOrder({ product_id, quantity }) {
@@ -55,6 +85,28 @@ export function* createOrder({ product_id, quantity }) {
         type: "success",
         title: "Order Success!",
         message: "Order was send!"
+      })
+    );
+  } catch (e) {
+    yield put(
+      toastrActions.add({
+        type: "error",
+        title: "Order Error!",
+        message: "Something went wrong!"
+      })
+    );
+  }
+}
+
+export function* updateOrder({ id }) {
+  try {
+    yield call(api.put, `order/${id}`, { status: true });
+
+    yield put(
+      toastrActions.add({
+        type: "success",
+        title: "Order Success!",
+        message: "Order confirmed!"
       })
     );
   } catch (e) {
