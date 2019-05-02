@@ -18,7 +18,7 @@ import { bindActionCreators } from "redux";
 import WorkerActions from "../../../store/ducks/worker";
 import ClientActions from "../../../store/ducks/client";
 import ScheduleActions from "../../../store/ducks/schedule";
-
+import { Link } from "react-router-dom";
 class NewSchedule extends Component {
   constructor(props) {
     super(props);
@@ -90,6 +90,7 @@ class NewSchedule extends Component {
           <PerfectScrollbar style={{ overflowX: "hidden" }}>
             <Row>
               <Col>
+                <Link to="/schedule">Back</Link>
                 <Form onSubmit={this.handleSubmit}>
                   <h2>New Schedule</h2>
                   <FormGroup>

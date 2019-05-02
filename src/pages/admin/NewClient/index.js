@@ -6,7 +6,7 @@ import ClientActions from "../../../store/ducks/client";
 
 import NavBar from "../../../components/NavBar";
 import { Form, Container } from "./styles";
-
+import { Link } from "react-router-dom";
 class NewClient extends Component {
   constructor(props) {
     super(props);
@@ -39,6 +39,7 @@ class NewClient extends Component {
         <Container>
           <Row>
             <Col>
+              <Link to="/client">Back</Link>
               <Form onSubmit={this.handleSubmit}>
                 <h2>New client</h2>
                 <FormGroup>

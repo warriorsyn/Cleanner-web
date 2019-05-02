@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Col, Row, Label, Input, Button, Table } from "reactstrap";
+
 import { Link } from "react-router-dom";
 
 import NavBar from "../../../../components/NavBar";
@@ -10,10 +11,9 @@ import moment from "moment";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
-import ClientActions from "../../../../store/ducks/client";
 import ProductActions from "../../../../store/ducks/product";
 
-class UniqueClientReport extends Component {
+class ProductReport extends Component {
   state = {
     firstDate: new Date(),
     secondDate: new Date()
@@ -25,11 +25,13 @@ class UniqueClientReport extends Component {
 
   handlerSubmit = e => {
     e.preventDefault();
-    this.props.clientDispatch.getClientReportRequest(
+    this.props.getProductReportRequest(
       this.props.match.params.id,
       `${moment(this.state.firstDate).format("YYYY-MM-DD")}`,
       `${moment(this.state.secondDate).format("YYYY-MM-DD")}`
     );
+
+    console.log(this.props);
   };
 
   render() {
@@ -42,7 +44,7 @@ class UniqueClientReport extends Component {
             <Col>
               <Link to="/client/report">Back</Link>
               <Form onSubmit={this.handlerSubmit}>
-                <h2>Client Report</h2>
+                <h2>Client Product Report</h2>
                 <Row>
                   <Col sm="5" xs="12">
                     <Label for="first">Date 01</Label>
@@ -72,18 +74,20 @@ class UniqueClientReport extends Component {
                 <Table striped>
                   <thead>
                     <tr>
+                      <th>Product</th>
+                      <th>quantity</th>
                       <th>Date</th>
-                      <th>Hour</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {this.props.report.report.data &&
-                      this.props.report.report.data.map(item => (
+                    {this.props.productReport.productReport.data &&
+                      this.props.productReport.productReport.data.map(item => (
                         <tr>
+                          <td>{item.name}</td>
+                          <td>{item.quantity}</td>
                           <td>
-                            {moment(item.finished_job).format("DD/MM/YYYY")}
+                            {moment(item.finished_order).format("DD/MM/YYYY")}
                           </td>
-                          <td>{item.time_worked}</td>
                         </tr>
                       ))}
                   </tbody>
@@ -97,18 +101,13 @@ class UniqueClientReport extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    clientDispatch: bindActionCreators(ClientActions, dispatch),
-    productDispatch: bindActionCreators(ProductActions, dispatch)
-  };
-};
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(ProductActions, dispatch);
 
 const mapStateToProps = state => ({
-  report: state.client,
   productReport: state.product
 });
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(UniqueClientReport);
+)(ProductReport);

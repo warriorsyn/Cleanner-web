@@ -30,6 +30,7 @@ import OrderProduct from "../pages/worker/OrderProduct";
 import OrdersProduct from "../pages/admin/OrdersProduct";
 import UpdateProduct from "../pages/admin/UpdateProduct";
 import RequestedProducts from "../pages/worker/RequestedProducts";
+import ProductReport from "../pages/admin/ClientReport/ProductReport";
 
 const routes = () => (
   <ConnectedRouter history={history}>
@@ -42,6 +43,11 @@ const routes = () => (
       <Private path="/client/new" exact component={NewClient} />
       <Private path="/client/report" exact component={ChooseClient} />
       <Private path="/client/report/:id" exact component={UniqueClientReport} />
+      <Private
+        path="/client/productreport/:id"
+        exact
+        component={ProductReport}
+      />
       {/* Worker Management Route */}
       <Private path="/worker" exact component={Worker} />
       <Private path="/worker/new" exact component={NewWorker} />

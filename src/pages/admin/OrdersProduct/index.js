@@ -6,6 +6,7 @@ import ProductActions from "../../../store/ducks/product";
 
 import NavBar from "../../../components/NavBar";
 import { Container, Button } from "./styles";
+import moment from "moment";
 
 class OrdersProduct extends Component {
   componentDidMount() {
@@ -17,10 +18,13 @@ class OrdersProduct extends Component {
     }
   }
 
-  handlerClick = id => this.props.updateOrderRequest(id);
+  handlerClick = id => {
+    this.props.updateOrderRequest(id);
+    this.props.updateFinishRequest(id, moment().format("YYYY-MM-DD"));
+  };
 
   render() {
-    console.log(this.props.product.orders);
+    console.log(this.props.product);
     return (
       <Fragment>
         <NavBar />

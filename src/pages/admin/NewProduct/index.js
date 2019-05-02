@@ -3,7 +3,7 @@ import { FormGroup, Label, Input, Col, Row, Button } from "reactstrap";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import ProductActions from "../../../store/ducks/product";
-
+import { Link } from "react-router-dom";
 import NavBar from "../../../components/NavBar";
 import { Form, Container } from "./styles";
 
@@ -36,6 +36,7 @@ class NewProduct extends Component {
         <Container>
           <Row>
             <Col>
+              <Link to="/product">Back</Link>
               <Form onSubmit={this.handleSubmit}>
                 <h2>New Product</h2>
                 <FormGroup>

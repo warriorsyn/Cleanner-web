@@ -119,3 +119,26 @@ export function* updateOrder({ id }) {
     );
   }
 }
+
+export function* updateFinish({ id, date }) {
+  try {
+    yield call(api.put, `order/${id}`, { finished_order: `${date}` });
+  } catch (e) {
+    console.log(e.response);
+  }
+}
+
+export function* getProductReport({ id, first_date, second_date }) {
+  try {
+    console.log(first_date, second_date, id);
+    const { data } = yield call(api.post, `productreport/${id}`, {
+      first_date,
+      second_date
+    });
+
+    console.log(data.rows);
+    yield put(ProductActions.getProductReportSuccess(data.rows));
+  } catch (e) {
+    console.log(e.response);
+  }
+}

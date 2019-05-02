@@ -30,6 +30,7 @@ class ChooseClient extends Component {
                     <th>Name</th>
 
                     <th />
+                    <th />
                   </tr>
                 </thead>
                 <tbody>
@@ -44,6 +45,15 @@ class ChooseClient extends Component {
                             className="btn btn-primary btn-sm"
                           >
                             Report
+                          </Button>
+                        </td>
+
+                        <td>
+                          <Button
+                            to={`/client/productreport/${item.id}`}
+                            className="btn btn-primary btn-sm"
+                          >
+                            Product report
                           </Button>
                         </td>
                       </tr>

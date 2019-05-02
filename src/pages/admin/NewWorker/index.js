@@ -6,7 +6,7 @@ import NavBar from "../../../components/NavBar";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import WorkerActions from "../../../store/ducks/worker";
-
+import { Link } from "react-router-dom";
 class NewWorker extends Component {
   constructor(props) {
     super(props);
@@ -36,6 +36,7 @@ class NewWorker extends Component {
         <Container>
           <Row>
             <Col>
+              <Link to="/worker">Back</Link>
               <Form onSubmit={this.handleSubmit}>
                 <h2>New Worker</h2>
                 <FormGroup>

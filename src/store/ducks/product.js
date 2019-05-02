@@ -15,7 +15,10 @@ const { Types, Creators } = createActions({
   getProductByIdSuccess: ["data"],
   createOrderRequest: ["product_id", "quantity"],
   getOrderByWorkerIdRequest: null,
-  getOrderByWorkerIdSuccess: ["data"]
+  getOrderByWorkerIdSuccess: ["data"],
+  getProductReportRequest: ["id", "first_date", "second_date"],
+  getProductReportSuccess: ["data"],
+  updateFinishRequest: ["id", "date"]
 });
 
 export const ProductTypes = Types;
@@ -27,7 +30,8 @@ export const INITIAL_STATE = Immutable({
   products: [],
   orders: [],
   single: [],
-  orderByWorkerId: []
+  orderByWorkerId: [],
+  productReport: []
 });
 
 /* Reducers */
@@ -42,11 +46,15 @@ export const getById = (state, data) => state.merge({ single: data });
 
 export const getOrderByWorkerId = (state, data) =>
   state.merge({ orderByWorkerId: data });
+
+export const productReport = (state, data) =>
+  state.merge({ productReport: data });
 /* Reducers to types */
 
 export const reducer = createReducer(INITIAL_STATE, {
   [Types.GET_PRODUCTS_SUCCESS]: getProduct,
   [Types.GET_ORDERS_SUCCESS]: getOrders,
   [Types.GET_PRODUCT_BY_ID_SUCCESS]: getById,
-  [Types.GET_ORDER_BY_WORKER_ID_SUCCESS]: getOrderByWorkerId
+  [Types.GET_ORDER_BY_WORKER_ID_SUCCESS]: getOrderByWorkerId,
+  [Types.GET_PRODUCT_REPORT_SUCCESS]: productReport
 });
