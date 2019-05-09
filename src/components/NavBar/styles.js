@@ -13,14 +13,14 @@ export const LinkBar = styled(Link)`
     padding: 2px;
     margin-right: 10px;
     text-decoration: none !important;
-    color: black;
+    color: white;
     font-size: 18px;
   }
 `;
 
 export const Navbar = styled(BootstrapNavbar)`
-  padding-bottom: 86px !important;
+  padding-bottom: 26px !important;
   @media (min-width: 768px) {
-    padding-bottom: 0 !important;
+    padding-bottom: 10px !important;
   }
 `;

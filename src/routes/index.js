@@ -31,11 +31,12 @@ import OrdersProduct from "../pages/admin/OrdersProduct";
 import UpdateProduct from "../pages/admin/UpdateProduct";
 import RequestedProducts from "../pages/worker/RequestedProducts";
 import ProductReport from "../pages/admin/ClientReport/ProductReport";
-
+import Report from "../pages/admin/Report";
 const routes = () => (
   <ConnectedRouter history={history}>
     <Switch>
       <Route path="/" exact component={SignIn} />
+      <Private path="/report" exact component={Report} />
       {/* admin routes */}
       <Private path="/home" exact component={Main} />
       {/* Client Route */}

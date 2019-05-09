@@ -10,6 +10,7 @@ export const Container = styled(BootstrapContainer)`
 `;
 
 export const Options = styled(Link)`
+  background-color: #d5edda;
   text-decoration: none !important;
   border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 10px;

@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Row, Col, Button } from "reactstrap";
 import NavBar from "../../components/NavBar";
+import Footer from "../../components/Footer";
 
 import { connect } from "react-redux";
 
@@ -12,10 +13,44 @@ class Main extends Component {
   handlerClick = () => this.props.signOut();
   render() {
     return (
-      <div>
+      <Fragment>
         <NavBar />
         <Container>
           <Row>
+            <Col sm="12">
+              <Options to="/client">
+                <span>Client</span>
+
+                <div>
+                  <i className="fas fa-arrow-right" />
+                </div>
+              </Options>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col sm="12">
+              <Options to="/schedule">
+                <span>Schedule</span>
+                <div>
+                  <i className="fas fa-arrow-right" />
+                </div>
+              </Options>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col sm="12">
+              <Options to="/worker">
+                <span>Worker</span>
+                <div>
+                  <i className="fas fa-arrow-right" />
+                </div>
+              </Options>
+            </Col>
+          </Row>
+
+          {/* <Row>
             <Col sm="12">
               <Options to="/worker/report">
                 <span>Worker Hours report</span>
@@ -37,11 +72,23 @@ class Main extends Component {
                 </div>
               </Options>
             </Col>
+          </Row> */}
+
+          <Row>
+            <Col>
+              <Options to="/report">
+                <span>Report</span>
+
+                <div>
+                  <i className="fas fa-arrow-right" />
+                </div>
+              </Options>
+            </Col>
           </Row>
 
           <Row>
             <Col sm="12">
-              <Options to="/product">
+              <Options last to="/product">
                 <span>Product</span>
 
                 <div>
@@ -55,7 +102,8 @@ class Main extends Component {
             </Col>
           </Row>
         </Container>
-      </div>
+        <Footer />
+      </Fragment>
     );
   }
 }

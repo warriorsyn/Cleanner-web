@@ -18,8 +18,8 @@ export default class NavBar extends React.Component {
   render() {
     return (
       <Fragment>
-        <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">
+        <Navbar style={{ background: "#8ac542" }} light expand="md">
+          <NavbarBrand style={{ color: "white" }} href="/home">
             Admin ({localStorage.getItem("@cleaner:user")})
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
