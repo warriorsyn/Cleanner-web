@@ -76,6 +76,18 @@ export function* getOrderByWorkerId() {
 
 export function* createOrder({ product_id, quantity }) {
   try {
+    const product = yield call(api.get, `product/${product_id}`);
+
+    if (quantity > product.data.quantity) {
+      return yield put(
+        toastrActions.add({
+          type: "error",
+          title: "Order Error!",
+          message: "Quantity is bigger than it should!"
+        })
+      );
+    }
+
     yield call(api.post, "order", { product_id, quantity });
 
     yield put(push("/worker/myschedules"));

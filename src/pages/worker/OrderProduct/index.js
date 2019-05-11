@@ -44,7 +44,7 @@ class OrderProduct extends Component {
               <Form onSubmit={this.handleSubmit}>
                 {this.props.product.single.data && (
                   <div>
-                    <span>Work: {this.props.product.single.data.name}</span>
+                    <span>Product: {this.props.product.single.data.name}</span>
                     <span>
                       Quantity: {this.props.product.single.data.quantity}{" "}
                     </span>
