@@ -7,7 +7,7 @@ import {
 export const Container = styled(BootstrapContainer)`
   display: flex;
   flex-direction: column;
-  height: 65%;
+  height: calc(100% - 2rem);
   justify-content: center;
 `;
 
