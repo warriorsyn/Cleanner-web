@@ -3,10 +3,10 @@ import { Col, Row, Table } from "reactstrap";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import ProductActions from "../../../store/ducks/product";
-
+import { Link } from "react-router-dom";
 import WorkerNavBar from "../../../components/WorkerNavBar";
 import { Container, Button } from "./styles";
-
+import Footer from "../../../components/Footer";
 class Products extends Component {
   componentDidMount() {
     this.props.getProductsRequest();
@@ -25,6 +25,7 @@ class Products extends Component {
         <Container>
           <Row>
             <Col>
+              <Link to="/worker/home">Back</Link>
               <Table striped>
                 <thead>
                   <tr>
@@ -55,6 +56,7 @@ class Products extends Component {
             </Col>
           </Row>
         </Container>
+        <Footer />
       </Fragment>
     );
   }

@@ -6,6 +6,7 @@ export const Container = styled(BootstrapContainer)`
   display: flex;
   flex-direction: column;
   margin-top: 35px;
+  height: 78%;
 `;
 
 export const Button = styled(Link)`

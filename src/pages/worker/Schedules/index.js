@@ -2,10 +2,11 @@ import React, { Component, Fragment } from "react";
 import { Row, Col, Table } from "reactstrap";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import { Link } from "react-router-dom";
 import ScheduleActions from "../../../store/ducks/schedule";
 import WorkerNavBar from "../../../components/WorkerNavBar";
 import moment from "moment";
-
+import Footer from "../../../components/Footer";
 import { Container, Button } from "./styles";
 
 class Schedules extends Component {
@@ -26,6 +27,7 @@ class Schedules extends Component {
         <Container>
           <Row>
             <Col>
+              <Link to="/worker/home">Back</Link>
               <Table striped>
                 <thead>
                   <tr>
@@ -68,6 +70,7 @@ class Schedules extends Component {
             </Col>
           </Row>
         </Container>
+        <Footer />
       </Fragment>
     );
   }

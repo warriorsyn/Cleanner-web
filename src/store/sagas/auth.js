@@ -19,7 +19,7 @@ export function* signIn({ email, password }) {
     yield put(AuthActions.roleSuccess(response.data.user.role));
 
     if (response.data.user.role === "worker") {
-      return yield put(push("/worker/myschedules"));
+      return yield put(push("/worker/home"));
     } else {
       yield put(push("/home"));
     }

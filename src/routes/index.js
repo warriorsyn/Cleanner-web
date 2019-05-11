@@ -32,6 +32,7 @@ import UpdateProduct from "../pages/admin/UpdateProduct";
 import RequestedProducts from "../pages/worker/RequestedProducts";
 import ProductReport from "../pages/admin/ClientReport/ProductReport";
 import Report from "../pages/admin/Report";
+import Home from "../pages/worker/Home";
 const routes = () => (
   <ConnectedRouter history={history}>
     <Switch>
@@ -70,6 +71,8 @@ const routes = () => (
       <Private path="/product/request" exact component={OrdersProduct} />
       {/* Worker Route */}
 
+      {/* worker routes */}
+      <WorkerRoute path="/worker/home" exact component={Home} />
       {/* Schedule Worker  */}
       <WorkerRoute path="/worker/myschedules" exact component={Schedules} />
       <WorkerRoute

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { Row, Col, FormGroup, Button } from "reactstrap";
+import { Row, Col, FormGroup, Button, Label, Input } from "reactstrap";
 import { Container, Form } from "./styles";
 
 import { connect } from "react-redux";
@@ -11,7 +11,8 @@ class OrderProduct extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      time: null
+      time: null,
+      quantity: 1
     };
   }
 
@@ -26,7 +27,7 @@ class OrderProduct extends Component {
 
     // console.log("id", id, "clientid", clientId);
 
-    this.props.createOrderRequest(id, 1);
+    this.props.createOrderRequest(id, this.state.quantity);
   };
 
   componentDidMount() {
@@ -50,7 +51,16 @@ class OrderProduct extends Component {
                   </div>
                 )}
                 <br />
-                <FormGroup />
+                <FormGroup>
+                  <Label>Quantity</Label>
+                  <Input
+                    min="1"
+                    name="quantity"
+                    type="number"
+                    value={this.state.quantity}
+                    onChange={this.handleInputChange}
+                  />
+                </FormGroup>
                 <Button>Take</Button>
               </Form>
             </Col>

@@ -8,6 +8,7 @@ export const Footer = styled.footer`
   height: 40px;
   i {
     font-size: 30px;
+    color: white;
   }
 
   @media (min-width: 768px) {

@@ -1,13 +1,8 @@
 import React, { Fragment } from "react";
 import { Collapse, NavbarToggler, NavbarBrand, Nav, NavItem } from "reactstrap";
-import { LinkBar, Navbar, Button } from "./styles";
+import { LinkBar, Navbar } from "./styles";
 
-import { connect } from "react-redux";
-
-import { bindActionCreators } from "redux";
-import AuthActions from "../../store/ducks/auth";
-
-class WorkerNavBar extends React.Component {
+export default class WorkerNavBar extends React.Component {
   constructor(props) {
     super(props);
 
@@ -27,30 +22,21 @@ class WorkerNavBar extends React.Component {
   render() {
     return (
       <Fragment>
-        <Navbar color="light" light expand="md">
-          <NavbarBrand href="/worker/myschedules">
+        <Navbar style={{ background: "#8ac542" }} light expand="md">
+          <NavbarBrand style={{ color: "white" }} href="/worker/home">
             Worker ({localStorage.getItem("@cleaner:user")})
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <LinkBar to="/worker/myschedules">Schedules</LinkBar>
+                <LinkBar to="/worker/home">Home</LinkBar>
               </NavItem>
               <NavItem>
-                <LinkBar to="/worker/products">Products</LinkBar>
+                <LinkBar to="/worker/myschedules">Schedule</LinkBar>
               </NavItem>
               <NavItem>
-                <LinkBar to="/worker/requested">Requested products</LinkBar>
-              </NavItem>
-              <NavItem>
-                <Button
-                  onClick={this.logout}
-                  style={{ marginTop: 5 }}
-                  className="btn btn-danger"
-                >
-                  Logout
-                </Button>
+                <LinkBar to="/worker/products">Product</LinkBar>
               </NavItem>
             </Nav>
           </Collapse>
@@ -59,10 +45,3 @@ class WorkerNavBar extends React.Component {
     );
   }
 }
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(AuthActions, dispatch);
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(WorkerNavBar);
