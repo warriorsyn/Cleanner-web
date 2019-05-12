@@ -124,11 +124,6 @@ export function* updateOrder({ id }) {
       data: { quantity: productQuantity }
     } = product;
 
-    console.log(product);
-
-    console.log("quantidade order: ", orderQuantity);
-    console.log("quatidade de produto", productQuantity);
-
     let newQuantity = productQuantity - orderQuantity;
 
     if (newQuantity < 0) {
@@ -140,8 +135,6 @@ export function* updateOrder({ id }) {
         })
       );
     }
-
-    console.log("Nova quantidade de produtos", newQuantity);
 
     yield call(api.put, `product/${product_id}`, { quantity: newQuantity });
 

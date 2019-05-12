@@ -80,7 +80,7 @@ class ProductReport extends Component {
                     </tr>
                   </thead>
                   <tbody>
-                    {this.props.productReport.productReport.data &&
+                    {this.props.productReport.productReport.data ? (
                       this.props.productReport.productReport.data.map(item => (
                         <tr>
                           <td>{item.name}</td>
@@ -89,7 +89,12 @@ class ProductReport extends Component {
                             {moment(item.finished_order).format("DD/MM/YYYY")}
                           </td>
                         </tr>
-                      ))}
+                      ))
+                    ) : (
+                      <div id="nothing">
+                        <span>Please, choose the first and second date</span>
+                      </div>
+                    )}
                   </tbody>
                 </Table>
               </Form>

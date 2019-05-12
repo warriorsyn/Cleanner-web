@@ -7,8 +7,12 @@ import {
 export const Container = styled(BootstrapContainer)`
   display: flex;
   flex-direction: column;
-  height: 65%;
+  height: calc(100% - 1rem);
   justify-content: center;
+
+  @media (min-width: 768px) {
+    height: 75%;
+  }
 `;
 
 export const Form = styled(BootstrapForm)`
@@ -24,5 +28,17 @@ export const Form = styled(BootstrapForm)`
 
   h2 {
     color: #7b7878;
+  }
+
+  #nothing {
+    display: flex;
+    justify-content: center;
+    margin-left: 3rem;
+    margin-top: 0.5rem;
+  }
+
+  #nothing span {
+    color: grey;
+    font-size: 18px;
   }
 `;

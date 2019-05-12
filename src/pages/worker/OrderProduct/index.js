@@ -5,7 +5,7 @@ import { Container, Form } from "./styles";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import ProductActions from "../../../store/ducks/product";
-
+import { Link } from "react-router-dom";
 import WorkerNavBar from "../../../components/WorkerNavBar";
 class OrderProduct extends Component {
   constructor(props) {
@@ -41,6 +41,7 @@ class OrderProduct extends Component {
         <Container>
           <Row>
             <Col>
+              <Link to="/worker/home">Back</Link>
               <Form onSubmit={this.handleSubmit}>
                 {this.props.product.single.data && (
                   <div>

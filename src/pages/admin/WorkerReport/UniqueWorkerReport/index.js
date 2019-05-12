@@ -32,6 +32,10 @@ class UniqueWorkerReport extends Component {
   };
 
   render() {
+    // if (!this.props.report.report.data) {
+    //   return <h2>Loading...</h2>;
+    // }
+
     return (
       <Fragment>
         <NavBar />
@@ -74,15 +78,25 @@ class UniqueWorkerReport extends Component {
                     </tr>
                   </thead>
                   <tbody>
-                    {this.props.report.report.data &&
+                    {this.props.report.report.data ? (
                       this.props.report.report.data.map(item => (
                         <tr>
+                          {/* <td>
+                            {moment(item.finished_job)
+                              .add(1, "hours")
+                              .format("hh:mm DD/MM/YYYY")}
+                          </td> */}
                           <td>
                             {moment(item.finished_job).format("DD/MM/YYYY")}
                           </td>
                           <td>{item.time_worked}</td>
                         </tr>
-                      ))}
+                      ))
+                    ) : (
+                      <div id="nothing">
+                        <span>Please, choose the first and second date</span>
+                      </div>
+                    )}
                   </tbody>
                 </Table>
               </Form>

@@ -77,7 +77,7 @@ class UniqueClientReport extends Component {
                     </tr>
                   </thead>
                   <tbody>
-                    {this.props.report.report.data &&
+                    {this.props.report.report.data ? (
                       this.props.report.report.data.map(item => (
                         <tr>
                           <td>
@@ -85,7 +85,12 @@ class UniqueClientReport extends Component {
                           </td>
                           <td>{item.time_worked}</td>
                         </tr>
-                      ))}
+                      ))
+                    ) : (
+                      <div id="nothing">
+                        <span>Please, choose the first and second date</span>
+                      </div>
+                    )}
                   </tbody>
                 </Table>
               </Form>
