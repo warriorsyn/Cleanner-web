@@ -19,7 +19,7 @@ class Home extends Component {
           <Row>
             <Col sm="12">
               <Options to="/worker/myschedules">
-                <span>Schedule</span>
+                <span>My Schedule</span>
 
                 <div>
                   <i className="fas fa-arrow-right" />
@@ -29,8 +29,19 @@ class Home extends Component {
           </Row>
           <Row>
             <Col sm="12">
-              <Options last to="/worker/products">
+              <Options to="/worker/products">
                 <span>Product</span>
+
+                <div>
+                  <i className="fas fa-arrow-right" />
+                </div>
+              </Options>
+            </Col>
+          </Row>
+          <Row>
+            <Col sm="12">
+              <Options last to="/worker/requested">
+                <span>Requested products</span>
 
                 <div>
                   <i className="fas fa-arrow-right" />

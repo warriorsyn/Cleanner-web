@@ -3,7 +3,7 @@ import { Col, Row, Table } from "reactstrap";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import ProductActions from "../../../store/ducks/product";
-
+import { Link } from "react-router-dom";
 import WorkerNavBar from "../../../components/WorkerNavBar";
 import { Container } from "./styles";
 
@@ -26,6 +26,7 @@ class Products extends Component {
         <Container>
           <Row>
             <Col>
+              <Link to="/worker/home">Back</Link>
               <Table striped>
                 <thead>
                   <tr>
