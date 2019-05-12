@@ -5,7 +5,7 @@ import { bindActionCreators } from "redux";
 import ProductActions from "../../../store/ducks/product";
 
 import NavBar from "../../../components/NavBar";
-import { Form, Container } from "./styles";
+import { Form, Container, UnInput } from "./styles";
 
 class UpdateProduct extends Component {
   constructor(props) {
@@ -26,10 +26,8 @@ class UpdateProduct extends Component {
     this.props.getProductByIdRequest(this.props.match.params.id);
   }
 
-  handleSubmit = e => {
-    e.preventDefault();
-
-    const { name, code, quantity } = this.state;
+  handleSubmit = data => {
+    const { name, code, quantity } = data;
     const id = this.props.match.params.id;
     this.props.updateProductsRequest(name, code, quantity, id);
   };
@@ -47,35 +45,36 @@ class UpdateProduct extends Component {
         <Container>
           <Row>
             <Col>
-              <Form onSubmit={this.handleSubmit}>
+              <Form
+                initialData={this.props.product.single.data}
+                onSubmit={this.handleSubmit}
+              >
                 <h2>Update Product</h2>
                 {this.props.product.single.data && (
                   <FormGroup>
                     <Label for="name">Name</Label>
-                    <Input
+                    <UnInput
+                      className="form-control"
                       id="name"
                       name="name"
                       type="text"
-                      defaultValue={product.single.data.name}
-                      onChange={this.handleInputChange}
                     />
 
                     <Label for="code">Code</Label>
-                    <Input
+                    <UnInput
+                      className="form-control"
                       id="code"
                       name="code"
                       type="text"
-                      onChange={this.handleInputChange}
-                      defaultValue={this.state.code}
                     />
 
                     <Label for="quantity">Quantity</Label>
-                    <Input
+                    <UnInput
+                      className="form-control"
                       id="quantity"
                       name="quantity"
                       type="number"
-                      defaultValue={product.single.data.quantity}
-                      onChange={this.handleInputChange}
+                      min="0"
                     />
                   </FormGroup>
                 )}

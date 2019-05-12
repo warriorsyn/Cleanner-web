@@ -9,10 +9,16 @@ export function* createWorker({ name, email, password }) {
   try {
     const role = "worker";
 
-    yield call(api.post, "register", { name, email, password, role });
+    const worker = yield call(api.post, "register", {
+      name,
+      email,
+      password,
+      role
+    });
 
     yield put(WorkerActions.createWorkerSuccess());
 
+    // console.log(worker);
     yield put(push("/worker"));
 
     yield put(

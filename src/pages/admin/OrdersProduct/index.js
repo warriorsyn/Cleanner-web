@@ -24,7 +24,7 @@ class OrdersProduct extends Component {
   };
 
   render() {
-    console.log(this.props.product);
+ 
     return (
       <Fragment>
         <NavBar />

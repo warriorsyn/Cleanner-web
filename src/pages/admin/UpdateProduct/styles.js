@@ -4,6 +4,8 @@ import {
   Container as BootstrapContainer
 } from "reactstrap";
 
+import { Form as UnForm, Input as UnInputs } from "unform";
+
 export const Container = styled(BootstrapContainer)`
   display: flex;
   flex-direction: column;
@@ -11,7 +13,9 @@ export const Container = styled(BootstrapContainer)`
   justify-content: center;
 `;
 
-export const Form = styled(BootstrapForm)`
+export const UnInput = styled(UnInputs)``;
+
+export const Form = styled(UnForm)`
   display: flex;
   flex-direction: column;
   background: white;

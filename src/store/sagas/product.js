@@ -112,7 +112,38 @@ export function* createOrder({ product_id, quantity }) {
 
 export function* updateOrder({ id }) {
   try {
-    yield call(api.put, `order/${id}`, { status: true });
+    const order = yield call(api.put, `order/${id}`, { status: true });
+
+    const {
+      data: { product_id, quantity: orderQuantity }
+    } = order;
+
+    const product = yield call(api.get, `product/${product_id}`);
+
+    const {
+      data: { quantity: productQuantity }
+    } = product;
+
+    console.log(product);
+
+    console.log("quantidade order: ", orderQuantity);
+    console.log("quatidade de produto", productQuantity);
+
+    let newQuantity = productQuantity - orderQuantity;
+
+    if (newQuantity < 0) {
+      return yield put(
+        toastrActions.add({
+          type: "error",
+          title: "Order Error!",
+          message: "There is not products available!"
+        })
+      );
+    }
+
+    console.log("Nova quantidade de produtos", newQuantity);
+
+    yield call(api.put, `product/${product_id}`, { quantity: newQuantity });
 
     yield put(
       toastrActions.add({

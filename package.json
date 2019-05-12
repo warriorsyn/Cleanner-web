@@ -20,7 +20,8 @@
     "redux-saga": "^1.0.2",
     "reduxsauce": "^1.1.0",
     "seamless-immutable": "^7.1.4",
-    "styled-components": "^4.2.0"
+    "styled-components": "^4.2.0",
+    "unform": "^1.2.3"
   },
   "scripts": {
     "start": "react-scripts start",
