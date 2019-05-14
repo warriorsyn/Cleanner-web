@@ -49,8 +49,16 @@ export function* getClientReport({ id, first_date, second_date }) {
       second_date
     });
 
-    yield put(ClientActions.getClientReportSuccess(data.rows));
-    console.log(first_date, second_date, id);
+    let { data: timeData } = yield call(
+      api.post,
+      `timeworkedclientreportsum/${id}`,
+      {
+        first_date,
+        second_date
+      }
+    );
+
+    yield put(ClientActions.getClientReportSuccess(data.rows, timeData.rows));
   } catch (e) {
     console.log(e.response);
   }

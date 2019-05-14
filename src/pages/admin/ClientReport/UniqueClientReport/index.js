@@ -30,6 +30,8 @@ class UniqueClientReport extends Component {
       `${moment(this.state.firstDate).format("YYYY-MM-DD")}`,
       `${moment(this.state.secondDate).format("YYYY-MM-DD")}`
     );
+
+    console.log(this.props);
   };
 
   render() {
@@ -93,6 +95,29 @@ class UniqueClientReport extends Component {
                     )}
                   </tbody>
                 </Table>
+                {this.props.report.report.sum &&
+                  this.props.report.report.sum.map(time => {
+                    if (!time.sum_report) {
+                      return <p />;
+                    }
+
+                    const minutesLength = time.sum_report.minutes.toString()
+                      .length;
+                    const minutes = time.sum_report.minutes;
+
+                    return (
+                      <div key={1}>
+                        <strong>
+                          Total Hours: {time.sum_report.hours}:
+                          {minutesLength === 1 ? (
+                            <span>0{minutes}</span>
+                          ) : (
+                            <span>{minutes}</span>
+                          )}
+                        </strong>
+                      </div>
+                    );
+                  })}
               </Form>
             </Col>
           </Row>

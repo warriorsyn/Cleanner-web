@@ -22,13 +22,15 @@ class UniqueWorkerReport extends Component {
 
   handlerSubmit = e => {
     e.preventDefault();
-    this.props.getHoursReportRequest(
+    const a = this.props.getHoursReportRequest(
       this.props.match.params.id,
       `${moment(this.state.firstDate).format("YYYY-MM-DD")}`,
       `${moment(this.state.secondDate).format("YYYY-MM-DD")}`
     );
 
-    console.log(this.props);
+    if (!a) {
+      console.log("nada");
+    }
   };
 
   render() {
@@ -99,6 +101,37 @@ class UniqueWorkerReport extends Component {
                     )}
                   </tbody>
                 </Table>
+                {/* 
+                {this.props.report.report.sum && (
+                  <strong>
+                    Total: {this.props.report.report.sum[0].sum_report.hours}: 0
+                    {this.props.report.report.sum[0].sum_report.minutes}
+                  </strong>
+                )} */}
+
+                {this.props.report.report.sum &&
+                  this.props.report.report.sum.map(time => {
+                    if (!time.sum_report) {
+                      return <p />;
+                    }
+
+                    const minutesLength = time.sum_report.minutes.toString()
+                      .length;
+                    const minutes = time.sum_report.minutes;
+
+                    return (
+                      <div key={1}>
+                        <strong>
+                          Total Hours: {time.sum_report.hours}:
+                          {minutesLength === 1 ? (
+                            <span>0{minutes}</span>
+                          ) : (
+                            <span>{minutes}</span>
+                          )}
+                        </strong>
+                      </div>
+                    );
+                  })}
               </Form>
             </Col>
           </Row>

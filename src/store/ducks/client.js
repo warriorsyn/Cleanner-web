@@ -9,7 +9,7 @@ const { Types, Creators } = createActions({
   getClientRequest: null,
   getClientSuccess: ["data"],
   getClientReportRequest: ["id", "first_date", "second_date"],
-  getClientReportSuccess: ["data"]
+  getClientReportSuccess: ["data", "sum"]
 });
 
 export const ClientTypes = Types;

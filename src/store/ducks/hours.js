@@ -5,7 +5,7 @@ import Immutable from "seamless-immutable";
 
 const { Types, Creators } = createActions({
   getHoursReportRequest: ["id", "first_date", "second_date"],
-  getHoursReportSuccess: ["data"]
+  getHoursReportSuccess: ["data", "sum"]
 });
 
 export const HoursTypes = Types;
@@ -19,7 +19,8 @@ export const INITIAL_STATE = Immutable({
 
 /* Reducers */
 
-export const hoursReportSuccess = (state, report) => state.merge({ report });
+export const hoursReportSuccess = (state, report, timesum) =>
+  state.merge({ report, timesum });
 
 /* Reducers to types */
 
