@@ -4,8 +4,10 @@ import Immutable from "seamless-immutable";
 /* Types & Action Creators */
 
 const { Types, Creators } = createActions({
-  createClientRequest: ["name", "email", "address"],
+  createClientRequest: ["name", "email", "address", "telephone"],
   createClientSuccess: null,
+  deleteClientRequest: ["id"],
+  deleteClientSuccess: null,
   getClientRequest: null,
   getClientSuccess: ["data"],
   getClientReportRequest: ["id", "first_date", "second_date"],

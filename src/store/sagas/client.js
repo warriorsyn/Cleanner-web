@@ -4,11 +4,11 @@ import { actions as toastrActions } from "react-redux-toastr";
 import { push } from "connected-react-router";
 import ClientActions from "../ducks/client";
 
-export function* createClient({ name, email, address }) {
+export function* createClient({ name, email, address, telephone }) {
   try {
     const role = "client";
 
-    yield call(api.post, "register", { name, email, address, role });
+    yield call(api.post, "register", { name, email, address, role, telephone });
 
     yield put(ClientActions.createClientSuccess());
 
@@ -61,5 +61,41 @@ export function* getClientReport({ id, first_date, second_date }) {
     yield put(ClientActions.getClientReportSuccess(data.rows, timeData.rows));
   } catch (e) {
     console.log(e.response);
+  }
+}
+
+export function* updateClient({ id }) {
+  try {
+    yield call(api.put, `user/${id}`, {});
+  } catch {
+    yield put(
+      toastrActions.add({
+        type: "error",
+        title: "Delete Error",
+        message: "Unexpected error!"
+      })
+    );
+  }
+}
+
+export function* deleteClient({ id }) {
+  try {
+    yield call(api.delete, `user/${id}`);
+
+    yield put(
+      toastrActions.add({
+        type: "success",
+        title: "Delete Success",
+        message: "Client deleted  with success!"
+      })
+    );
+  } catch (e) {
+    yield put(
+      toastrActions.add({
+        type: "error",
+        title: "Delete Error",
+        message: "Unexpected error!"
+      })
+    );
   }
 }

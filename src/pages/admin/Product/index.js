@@ -30,7 +30,7 @@ class Product extends Component {
                   <tr>
                     <th>Name</th>
                     <th>Quantity</th>
-                    <th />
+                    <th>Code</th>
                     <th />
                   </tr>
                 </thead>
@@ -41,19 +41,15 @@ class Product extends Component {
                         <td>{item.name}</td>
                         <td>{item.quantity}</td>
 
-                        <td>
-                          <button className="btn btn-primary btn-sm">
-                            More
-                          </button>
-                        </td>
+                        <td>{item.code}</td>
 
                         <td>
-                          <Button
-                            to={`/product/update/${item.id}`}
+                          <a
+                            href={`/product/update/${item.id}`}
                             className="btn btn-success btn-sm"
                           >
                             update
-                          </Button>
+                          </a>
                         </td>
                       </tr>
                     ))}

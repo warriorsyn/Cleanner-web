@@ -1,29 +1,26 @@
 import React, { Component, Fragment } from "react";
-import { FormGroup, Label, Input, Col, Row, Button } from "reactstrap";
+import { FormGroup, Label, Col, Row, Button } from "reactstrap";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import ProductActions from "../../../store/ducks/product";
+
+import { Link } from "react-router-dom";
 
 import NavBar from "../../../components/NavBar";
 import { Form, Container, UnInput } from "./styles";
 
 class UpdateProduct extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      code: "",
-      name: "",
-      quantity: ""
-    };
+  componentDidMount() {
+    this.loadData();
   }
 
-  handleInputChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+  loadData = () => this.props.getProductByIdRequest(this.props.match.params.id);
 
-  componentDidMount() {
-    this.props.getProductByIdRequest(this.props.match.params.id);
+  componentDidUpdate(prevProps) {
+    if (prevProps.match.params.id !== this.props.match.params.id) {
+      this.loadData();
+      alert("changed");
+    }
   }
 
   handleSubmit = data => {
@@ -34,7 +31,6 @@ class UpdateProduct extends Component {
 
   render() {
     const { product } = this.props;
-    console.log(this.state);
     if (!product.single.data) {
       return <h2>Loading</h2>;
     }
@@ -45,6 +41,7 @@ class UpdateProduct extends Component {
         <Container>
           <Row>
             <Col>
+              <Link to="/product">Back</Link>
               <Form
                 initialData={this.props.product.single.data}
                 onSubmit={this.handleSubmit}

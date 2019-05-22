@@ -7,13 +7,15 @@ import ClientActions from "../../../store/ducks/client";
 import NavBar from "../../../components/NavBar";
 import { Form, Container } from "./styles";
 import { Link } from "react-router-dom";
+
 class NewClient extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: "",
       name: "",
-      address: ""
+      address: "",
+      phone: ""
     };
   }
 
@@ -24,15 +26,14 @@ class NewClient extends Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    const { name, email, address } = this.state;
+    const { name, email, address, phone } = this.state;
 
     //call function (email, name, address)
 
-    this.props.createClientRequest(name, email, address);
+    this.props.createClientRequest(name, email, address, phone);
   };
 
   render() {
-    console.log(this.props);
     return (
       <Fragment>
         <NavBar />
@@ -63,6 +64,14 @@ class NewClient extends Component {
                   <Input
                     id="address"
                     name="address"
+                    type="text"
+                    onChange={this.handleInputChange}
+                  />
+
+                  <Label for="phone">Phone</Label>
+                  <Input
+                    id="phone"
+                    name="phone"
                     type="text"
                     onChange={this.handleInputChange}
                   />

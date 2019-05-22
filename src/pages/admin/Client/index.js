@@ -3,7 +3,7 @@ import { Col, Row, Table } from "reactstrap";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import ClientActions from "../../../store/ducks/client";
-
+import swal from "sweetalert";
 import NavBar from "../../../components/NavBar";
 import { Container, Button } from "./styles";
 
@@ -18,6 +18,20 @@ class Client extends Component {
     }
   }
 
+  handlerClick = async id => {
+    const alerts = await swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this data!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true
+    });
+
+    if (!alerts) return;
+    //delete client
+    this.props.deleteClientRequest(id);
+  };
+
   render() {
     return (
       <Fragment>
@@ -30,6 +44,8 @@ class Client extends Component {
                   <tr>
                     <th>Name</th>
                     <th>Address</th>
+                    <th>Telephone</th>
+                    <th />
                     <th />
                   </tr>
                 </thead>
@@ -46,10 +62,20 @@ class Client extends Component {
                           {item.address}
                         </td>
 
+                        <td>{item.telephone}</td>
                         <td>
-                          {/* <button className="btn btn-primary btn-sm">
-                            More
-                          </button> */}
+                          <Button className="btn btn-primary btn-sm">
+                            Update
+                          </Button>
+                        </td>
+
+                        <td>
+                          <button
+                            onClick={() => this.handlerClick(item.id)}
+                            className="btn btn-danger btn-sm"
+                          >
+                            Delete
+                          </button>
                         </td>
                       </tr>
                     ))}
